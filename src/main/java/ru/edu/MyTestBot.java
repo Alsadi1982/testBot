@@ -10,6 +10,12 @@ public class MyTestBot extends TelegramLongPollingBot {
 
     private static final String BOT_TOKEN = "5387806192:AAHarJkTesSrJ6XPILMi3OJFb2eOpqheZ7I";
     private static final String BOT_NAME = "AlexNN52bot";
+    private Storage storage;
+
+    MyTestBot()
+    {
+        storage = new Storage();
+    }
 
 
     @Override
@@ -55,9 +61,9 @@ public class MyTestBot extends TelegramLongPollingBot {
 
         //Сравниваем текст пользователя с нашими командами, на основе этого формируем ответ
         if(text.equals("/start"))
-            response = "Приветствую, бот знает много цитат. Жми /get, чтобы получить случайную из них";
+            response = "Приветствую, бот знает много анекдотов. Жми /get, чтобы получить случайную из них";
         else if(text.equals("/get"))
-            response = "Fuck you!";
+            response = storage.getRandQuote();
         else
             response = "Сообщение не распознано";
 
